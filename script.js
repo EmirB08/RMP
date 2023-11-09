@@ -69,6 +69,7 @@ const loadSoundsForClass = (classKey) => {
         button.addEventListener("click", () => {
             audio.play();
             toggleActiveClass(button);
+            createDownloadButton(sound);
         });
 
         soundsContainer.appendChild(button);
@@ -89,6 +90,14 @@ const playSoundByKey = (key) => {
             });
         }
     }
+};
+
+const createDownloadButton = (soundFile) => {
+    const downloadButton = document.getElementById('download-button');
+    downloadButton.href = `${soundProfiles[activeProfile].folder}/${soundFile.fileName}`;
+    downloadButton.download = soundFile.fileName;
+    downloadButton.textContent = `Download ${soundFile.fileName.split('.')[0]}`;
+    downloadButton.style.display = 'block';
 };
 
 classButtons.forEach(classKey => {
