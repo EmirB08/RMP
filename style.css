@@ -41,7 +41,7 @@ span {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 #soundsContainer {
@@ -80,4 +80,9 @@ span {
 
 .sound-button:hover {
     color: #e30f1a;
+}
+
+.page-instructions {
+    font-size: 0.75rem;
+    margin-bottom: 5px;
 }
