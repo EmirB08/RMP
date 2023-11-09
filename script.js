@@ -85,7 +85,7 @@ const classButtons = ["rogue", "mage", "priest"];
 
 classButtons.forEach(classKey => {
     const button = document.getElementById(`${classKey}Button`);
-    button.addEventListener('click', () => {
+    button.addEventListener("click", () => {
     const soundPath = `${soundProfiles[classKey].folder}/${soundProfiles[classKey].buttonSound}`;
     const audio = new Audio(soundPath);
     audio.play();
