@@ -1,6 +1,7 @@
 const soundProfiles = {
     rogue: {
         folder: "rogue",
+        buttonSound: "Rogue-selected.ogg",
         soundFiles: [
             { fileName: "Cheap Shot.ogg", keyBind: "1" },
             { fileName: "Cloak Of Shadows.ogg", keyBind: "2" },
@@ -12,6 +13,7 @@ const soundProfiles = {
     },
     mage: {
         folder: "mage",
+        buttonSound: "Mage-selected.ogg",
         soundFiles: [
             { fileName: "Alter Time.ogg", keyBind: "1" },
             { fileName: "Arcane Surge.ogg", keyBind: "2" },
@@ -23,6 +25,7 @@ const soundProfiles = {
     },
     priest: {
         folder: "priest",
+        buttonSound: "Priest-selected.ogg",
         soundFiles: [
             { fileName: "Apotheosis.ogg", keyBind: "1" },
             { fileName: "Chastise.ogg", keyBind: "2" },
@@ -81,8 +84,16 @@ document.addEventListener("keydown", (event) => {
 const classButtons = ["rogue", "mage", "priest"];
 
 classButtons.forEach(classKey => {
-  document.getElementById(`${classKey}Button`).addEventListener("click", () => loadSoundsForClass(classKey));
+    const button = document.getElementById(`${classKey}Button`);
+    button.addEventListener('click', () => {
+    const soundPath = `${soundProfiles[classKey].folder}/${soundProfiles[classKey].buttonSound}`;
+    const audio = new Audio(soundPath);
+    audio.play();
+
+    loadSoundsForClass(classKey);
+    });
 });
+
 
 const clearElementChildren = (element) => {
     while (element.firstChild) {
