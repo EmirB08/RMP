@@ -37,8 +37,22 @@ const soundProfiles = {
     },
 };
 
+const classButtons = ["rogue", "mage", "priest"];
 
 let activeProfile = null;
+
+const clearElementChildren = (element) => {
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
+};
+
+const toggleActiveClass = (button) => {
+    button.classList.add("sound-button-active");
+    setTimeout(() => {
+        button.classList.remove("sound-button-active");
+    }, 200);
+};
 
 const loadSoundsForClass = (classKey) => {
     const soundsContainer = document.getElementById("soundsContainer");
@@ -77,12 +91,6 @@ const playSoundByKey = (key) => {
     }
 };
 
-document.addEventListener("keydown", (event) => {
-    playSoundByKey(event.key);
-});
-
-const classButtons = ["rogue", "mage", "priest"];
-
 classButtons.forEach(classKey => {
     const button = document.getElementById(`${classKey}Button`);
     button.addEventListener("click", () => {
@@ -94,18 +102,13 @@ classButtons.forEach(classKey => {
     });
 });
 
+document.addEventListener("keydown", (event) => {
+    playSoundByKey(event.key);
+});
 
-const clearElementChildren = (element) => {
-    while (element.firstChild) {
-        element.removeChild(element.firstChild);
-    }
-};
 
-const toggleActiveClass = (button) => {
-    button.classList.add("sound-button-active");
-    setTimeout(() => {
-        button.classList.remove("sound-button-active");
-    }, 200);
-};
+
+
+
 
 
