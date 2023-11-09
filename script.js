@@ -38,18 +38,18 @@ const soundProfiles = {
 let activeProfile = null;
 
 const loadSoundsForClass = (classKey) => {
-    const soundsContainer = document.getElementById('soundsContainer');
+    const soundsContainer = document.getElementById("soundsContainer");
     clearElementChildren(soundsContainer);
 
     const profile = soundProfiles[classKey];
     profile.soundFiles.forEach(sound => {
-        const button = document.createElement('button');
-        button.className = 'sound-button';
+        const button = document.createElement("button");
+        button.className = "sound-button";
         button.textContent = `${sound.fileName.split('.')[0]} - ${sound.keyBind}`;
         button.dataset.keybind = sound.keyBind;
 
         const audio = new Audio(`${profile.folder}/${sound.fileName}`);
-        button.addEventListener('click', () => {
+        button.addEventListener("click", () => {
             audio.play();
             toggleActiveClass(button);
         });
@@ -74,13 +74,13 @@ const playSoundByKey = (key) => {
     }
 };
 
-const classButtons = ['rogue', 'mage', 'priest'];
+const classButtons = ["rogue", "mage", "priest"];
 
 classButtons.forEach(classKey => {
-  document.getElementById(`${classKey}Button`).addEventListener('click', () => loadSoundsForClass(classKey));
+  document.getElementById(`${classKey}Button`).addEventListener("click", () => loadSoundsForClass(classKey));
 });
 
-document.addEventListener('keydown', (event) => {
+document.addEventListener("keydown", (event) => {
     playSoundByKey(event.key);
 });
 
@@ -92,9 +92,9 @@ const clearElementChildren = (element) => {
 };
 
 const toggleActiveClass = (button) => {
-    button.classList.add('sound-button-active');
+    button.classList.add("sound-button-active");
     setTimeout(() => {
-        button.classList.remove('sound-button-active');
+        button.classList.remove("sound-button-active");
     }, 200);
 };
 
