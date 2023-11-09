@@ -92,6 +92,10 @@ span {
 #download-button {
     display: none;
     text-decoration: none;
-    color: #e30f1a;
+    color: #0d0d0d;
     margin-top: 1rem;
+}
+
+#download-button:hover {
+    color: #e30f1a;
 }
