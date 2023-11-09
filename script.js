@@ -74,16 +74,15 @@ const playSoundByKey = (key) => {
     }
 };
 
+document.addEventListener("keydown", (event) => {
+    playSoundByKey(event.key);
+});
+
 const classButtons = ["rogue", "mage", "priest"];
 
 classButtons.forEach(classKey => {
   document.getElementById(`${classKey}Button`).addEventListener("click", () => loadSoundsForClass(classKey));
 });
-
-document.addEventListener("keydown", (event) => {
-    playSoundByKey(event.key);
-});
-
 
 const clearElementChildren = (element) => {
     while (element.firstChild) {
